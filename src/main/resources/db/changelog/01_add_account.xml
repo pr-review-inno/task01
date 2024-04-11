@@ -1,0 +1,25 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="account" author="Author">
+        <preConditions>
+            <not>
+                <tableExists tableName="account"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="account" remarks="Счета">
+            <column name="id" type="bigint" remarks="Идентификатор записи">
+                <constraints primaryKey="true"
+                             primaryKeyName="account_pk"
+                             nullable="false"/>
+            </column>
+            <column name="account_number" type="varchar(50)"/>
+            <column name="bic" type="varchar(9)"/>
+            <column name="amount" type="numeric(17,2)"/>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>
